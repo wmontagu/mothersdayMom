@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Mother's Day Mom!</title>
+    <style>
+        body {
+            background-color: #f8f1f8;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-image: url('/api/placeholder/800/600');
+            background-size: cover;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+        
+        h1 {
+            color: #d866a3;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .mother-day-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .mother-day-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .message {
+            color: #6b2b5a;
+            font-size: 1.6em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        
+        .heart {
+            color: #d866a3;
+            font-size: 1.5em;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        #flower-message {
+            display: none;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .flower-container {
+            margin: 20px auto;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .big-flower {
+            font-size: 8em;
+            color: #d866a3;
+            animation: sway 3s infinite ease-in-out;
+            display: block;
+        }
+        
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+        
+        .signature {
+            font-family: 'Brush Script MT', cursive, Arial, sans-serif;
+            font-size: 2.5em;
+            color: #6b2b5a;
+            margin-top: 10px;
+        }
+        
+        .button {
+            background-color: #d866a3;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            margin: 20px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            background-color: #c44b8b;
+            transform: scale(1.05);
+        }
+
+        .flower {
+            font-size: 2em;
+            margin: 0 5px;
+        }
+    </style>
+    <script>
+        function toggleFlowerMessage() {
+            const card = document.getElementById('card');
+            const flowerMessage = document.getElementById('flower-message');
+            
+            if (flowerMessage.style.display === 'none' || flowerMessage.style.display === '') {
+                card.style.display = 'none';
+                flowerMessage.style.display = 'block';
+            } else {
+                flowerMessage.style.display = 'none';
+                card.style.display = 'block';
+            }
+        }
+        
+        // Make sure the DOM is fully loaded before adding event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to the open card button
+            const openButton = document.getElementById('open-card-button');
+            if (openButton) {
+                openButton.addEventListener('click', function() {
+                    toggleFlowerMessage();
+                });
+            }
+            
+            // Ensure the back button works correctly
+            const backButton = document.querySelector('#flower-message .button');
+            if (backButton) {
+                backButton.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent event bubbling
+                    document.getElementById('flower-message').style.display = 'none';
+                    document.getElementById('card').style.display = 'block';
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="card" class="card">
+        <h1>Happy Mother's Day Mom!</h1>
+        <div class="image-container">
+            <img class="mother-day-image" src="IMG_8610.jpg" alt="Flowers for Grandma">
+        </div>
+        <p class="message">
+            <b>
+                Thank you for your unconditional love and support Mom! I love you very much! Enjoy the day for you!
+            </b>
+            <br>
+            <span class="flower">🌸</span>
+            <span class="heart">♥</span>
+            <span class="flower">🌸</span>
+            <span class="heart">♥</span>
+            <span class="flower">🌸</span>
+        </p>
+        <button class="button" onclick="toggleFlowerMessage()">Click to open card</button>
+    </div>
+    
+    <div id="flower-message" class="card">
+        <div class="flower-container">
+            <span class="big-flower">🌹</span>
+            <div class="message"> I hope you enjoy your chocolate gift box!</div>
+            <div class="signature">Love, William</div>
+        </div>
+        <button class="button" onclick="toggleFlowerMessage()">Click to close card</button>
+    </div>
+</body>
+</html>
